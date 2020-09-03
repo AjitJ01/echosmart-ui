@@ -3,16 +3,30 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoryComponent } from './category/category.component';
+import { MaterialModule } from "./material/material.module";
+import { HttpClientModule } from '@angular/common/http';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { FormsModule } from '@angular/forms'
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CategoryComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CategoryComponent]
 })
 export class AppModule { }

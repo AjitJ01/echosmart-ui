@@ -1,0 +1,64 @@
+<!-- <div class="center">
+    <mat-form-field appearance="fill">
+        <mat-label>My Category</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let category of categories" [value]="category.name">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <router-outlet></router-outlet> -->
+    
+    <!-- <form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+      <mat-grid-list cols="1" rowHeight="400px">
+        <h1>
+          Welcome
+        </h1>
+        <mat-grid-tile>   
+          <div class="controles-container">
+            <input type="hidden" formControlName="id">
+            <mat-form-field>
+              <input formControlName="name" matInput placeholder="Category Name">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input formControlName="details" matInput placeholder="Category Details">
+              <mat-error>Invalid category details.</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form> -->
+    <h1>value is: {{service.form.controls['name'].value}}</h1>
+    <button mat-raised-button color="warn" (click)="onOpen()">Load</button>
+    <mat-toolbar>
+      <span>{{service.form.controls['name'].value?"Modify Category":"New Category"}}</span>
+      <span class="fill-remaining-space"></span>
+      <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+    </mat-toolbar>
+    <form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+      <mat-grid-list cols="1" rowHeight="300px">
+        <mat-grid-tile>
+          <div class="controles-container">
+            <input type="hidden" formControlName="id" name = 'id' id ='id'>
+            <mat-form-field>
+              <input type="text" formControlName="name"  name = 'name' id ='name' matInput placeholder="Name*" >
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" formControlName="details" name = 'details' id ='details' matInput placeholder="Email" >
+              <mat-error>Invalid details.</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
