@@ -8,14 +8,16 @@ import { CategoryComponent } from './category/category.component';
 import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryListComponent } from './category/category-list/category-list.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './common/components/modal/modal.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
