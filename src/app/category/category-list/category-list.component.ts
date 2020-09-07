@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 import { CategoryComponent } from '../category.component';
+import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,11 +14,14 @@ import { CategoryComponent } from '../category.component';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
+  icons = {
+    plus : faPlus,
+    search: faSearch
+  }
 
-  constructor(
-    private service : CategoryService,
-    private dialog: MatDialog,
-    ) { }
+  modalVisisble: boolean = false;
+
+  constructor(private service : CategoryService, private dialog: MatDialog) {}
 
     
   
@@ -48,7 +52,12 @@ export class CategoryListComponent implements OnInit {
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }
   
+  onModalOpen() {
+    this.modalVisisble = true;
+  }
+  
   onCreate(){
+    console.log('clicked')
     this.service.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

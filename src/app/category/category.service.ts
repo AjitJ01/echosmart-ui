@@ -5,13 +5,15 @@ import { FormGroup, FormControl, Validators  } from "@angular/forms";
 import {Category} from './category'
 import { HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
   private baseUrl = 'http://127.0.0.1:8000/api/category/';
-  constructor(private http: HttpClient , private _cookieService:CookieService) { }
+  constructor(private http: HttpClient , private _cookieService:CookieService) {}
+  
 
   
   form: FormGroup = new FormGroup({
@@ -29,8 +31,7 @@ export class CategoryService {
   }
 
   getCategorysList(): Observable<any> {
-    return this.http.get(this.baseUrl);
-    
+    return this.http.get(environment.apis.local);    
   }
 
   createCategory(category: Category): Observable<object> {
