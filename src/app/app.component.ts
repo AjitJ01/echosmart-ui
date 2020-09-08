@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'echosmart-ui';
+
+
+  istrue = false;
+  onClick() {
+    this.istrue = true
+  }
 }

@@ -27,7 +27,7 @@
   </div>
 </div>
 <app-modal [visible]="true"></app-modal> -->
-<div class="mat-elevation-z8">
+<!-- <div class="mat-elevation-z8">
 <table mat-table [dataSource]="listData" matSort>
     
     <ng-container matColumnDef='name'>
@@ -62,5 +62,47 @@
     <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
 </table>
 <mat-paginator [pageSizeOptions]="[10, 20, 40]" showFirstLastButtons></mat-paginator>
-</div>
+</div> -->
+
+    <!-- BOOTSTRAP list of data -->
+<ng-container class="table-responsive" *ngIf="!isModalOpen">
+<table class="container table table-hover auto mt-3">
+  <caption> This is a caption and we could make potential use of this feature</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let data of someData">
+    <tr>
+      <td>
+        <fa-icon [icon]="icons.externalLink" (click)="onClick(); appModal.open(data.id)"></fa-icon>
+      </td>
+      <td>
+        {{ data.name }}
+      </td>
+      <td>
+        {{ data.details }}
+      </td>
+      <td>
+        <fa-icon [icon]="icons.trash"></fa-icon>
+      </td>
+    </tr>
+    <tr>
+
+    </tr>
+  </tbody>
+</table>
+</ng-container>
+
+<ng-container>
+  <app-modal #appModal
+    [visible]="isModalOpen"
+    [modalTitle]="modalTitle"
+    [displayData]="someData"
+  ></app-modal>
+</ng-container>
 

@@ -1,12 +1,17 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { CategoryService } from '../category.service';
 import { MatSort } from '@angular/material/sort'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 import { CategoryComponent } from '../category.component';
-import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSearch, faExternalLinkAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
+export interface listData {
+  id: number,
+  details: string,
+  name: string
+}
 
 @Component({
   selector: 'app-category-list',
@@ -14,14 +19,21 @@ import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
+  
+  someData: listData[];
   icons = {
     plus : faPlus,
-    search: faSearch
-  }
+    search: faSearch,
+    externalLink: faExternalLinkAlt,
+    trash: faTrashAlt
+  };
+  isModalOpen: boolean = false;
+  modalTitle = 'Hello';
 
   modalVisisble: boolean = false;
 
-  constructor(private service : CategoryService, private dialog: MatDialog) {}
+  constructor(private service : CategoryService, private dialog: MatDialog) {
+  }
 
     
   
@@ -39,7 +51,9 @@ export class CategoryListComponent implements OnInit {
       this.listData = new MatTableDataSource(data);
       this.listData.sort = this.sort;
       this.listData.paginator = this.paginator;
-      console.log(data);
+      //console.log(data); // this gives all list of data
+      this.someData = data;
+      console.log(this.someData);
     })
   }
 
@@ -117,6 +131,10 @@ export class CategoryListComponent implements OnInit {
   //   }
   // }
 }
+
+  onClick() {
+    this.isModalOpen = true;
+  }
   
 
 

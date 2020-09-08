@@ -7,7 +7,9 @@ import  $ from 'jquery';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  @Input() visible: boolean = true;
+  @Input() visible: boolean = false;
+  @Input() modalTitle: string = "Modal Header";
+  @Input() displayData?;
   // @Output() modalLoad: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
@@ -17,12 +19,20 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     // this.modalLoad.emit()
     // console.log(this.modalVisisble)
-    console.log($);
+    // console.log(this.visible);
+    console.log(this.displayData);
   }
 
+  open(data) {
+    this.visible = true;
+    console.log(data)
+    setTimeout(() => {
+      console.log(data)
+    }, 2000);
+  }
 
   closeModal() {
-    // this.modalVisisble = false;
+    this.visible = false;
   }
 
 

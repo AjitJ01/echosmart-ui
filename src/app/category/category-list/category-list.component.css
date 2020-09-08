@@ -9,3 +9,7 @@
   .mat-header-cell{
     padding: 30px 30px 30px 0;
   }
+
+  ul {
+    list-style: none;
+  }
