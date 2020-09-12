@@ -1,4 +1,4 @@
 export class Category {
     name: string;
-    details: string;
+    description: string;
 }

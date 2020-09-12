@@ -1,48 +1,73 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener, Host } from '@angular/core';
-import  $ from 'jquery';
+import { Component, 
+  OnInit, 
+  Input, 
+  Output, 
+  EventEmitter, 
+  OnChanges,
+  AfterViewInit
+} from '@angular/core';
+import { CategoryService } from '../../../category/category.service';
+
+export interface categoryData {
+  id: number,
+  description: string,
+  image: string,
+  name: string
+}
+
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  styleUrls: ['./modal.component.css'],
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() visible: boolean = false;
-  @Input() modalTitle: string = "Modal Header";
-  @Input() displayData?;
-  // @Output() modalLoad: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() modalTitle: string = "UPDATE CATEGORY";
+  @Input() displayData : any;
+  @Input() modalType: string;
+  selectedData: any;
 
-  constructor() { }
+  @Output() isModalOpen: EventEmitter<any> = new EventEmitter<any>()
+
+  constructor(private serv: CategoryService) { }
 
   
 
   ngOnInit(): void {
-    // this.modalLoad.emit()
-    // console.log(this.modalVisisble)
-    // console.log(this.visible);
-    console.log(this.displayData);
+    console.log(this.modalType);
+  }
+
+  ngOnChanges(changes) {
+    if(this.displayData !== undefined) console.log(this.displayData[0]);
+  }
+
+  ngAfterViewInit() {
   }
 
   open(data) {
-    this.visible = true;
-    console.log(data)
-    setTimeout(() => {
-      console.log(data)
-    }, 2000);
+    this.visible = false;
+    this.selectedData = data;
+    console.log(this.selectedData);
   }
+
 
   closeModal() {
     this.visible = false;
+    this.isModalOpen.emit(false);
+  }
+
+  onCreateNew() {
+    const name = (<HTMLInputElement>document.getElementById('new-category')).value;
+    console.log(`name: ${name}`)
+    const description = (<HTMLInputElement>document.getElementById('new-category-description')).value;
+    this.serv.createCategory({name: name, description: description}).subscribe(
+      x => console.log(x)
+    );
   }
 
 
-  onClick(e) {
-    // document.getElementById('exampleModal').modal('show')
-    // var dailogue = document.getElementById('exampleModal');
-    // dailogue.showModal()
-    // var el = document.getElementById('exampleModal') as HTMLDivElement
-    // el.modal('show')
-  }
+  onClick(e) {}
 
 
 }

@@ -1,4 +1,4 @@
-<div class="search-div">
+<!-- <div class="search-div">
   <button mat-raised-button (click)="onCreate()">
     <mat-icon>add</mat-icon>Create
   </button>
@@ -8,7 +8,7 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-</div>
+</div> -->
 
 <!-- new code below -->
 <!-- <div class="container text-center CtaActions d-md-flex justify-content-center">
@@ -63,46 +63,65 @@
 </table>
 <mat-paginator [pageSizeOptions]="[10, 20, 40]" showFirstLastButtons></mat-paginator>
 </div> -->
-
-    <!-- BOOTSTRAP list of data -->
-<ng-container class="table-responsive" *ngIf="!isModalOpen">
-<table class="container table table-hover auto mt-3">
-  <caption> This is a caption and we could make potential use of this feature</caption>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Category</th>
-      <th scope="col">#</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let data of someData">
-    <tr>
-      <td>
-        <fa-icon [icon]="icons.externalLink" (click)="onClick(); appModal.open(data.id)"></fa-icon>
-      </td>
-      <td>
-        {{ data.name }}
-      </td>
-      <td>
-        {{ data.details }}
-      </td>
-      <td>
-        <fa-icon [icon]="icons.trash"></fa-icon>
-      </td>
-    </tr>
-    <tr>
-
-    </tr>
-  </tbody>
-</table>
-</ng-container>
-
-<ng-container>
-  <app-modal #appModal
-    [visible]="isModalOpen"
-    [modalTitle]="modalTitle"
-    [displayData]="someData"
-  ></app-modal>
-</ng-container>
+<app-navbar></app-navbar>
+<div style="position: relative; top: 80px;">
+  <div class="card mx-auto mt-2 mb-2" style="width: 88rem;">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="m-2" style="width: 20%;">
+        <button class="btn btn-light" style="width: 100%;" (click)="onCreateNow()">Create</button>
+      </div>
+      <div class="m-2" style="width: 60%;">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search . . .">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card m-auto" style="width: 88rem;"> <!-- BOOTSTRAP list of data -->
+    <div class="text-center">
+      <h2>Category Page</h2>
+    </div>
+    <div class="table-responsive" *ngIf="!isModalOpen">
+    <table class="container table table-hover auto mt-3">
+      <caption> List of category with description </caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of someData">
+        <tr>
+          <td>
+            <fa-icon [icon]="icons.externalLink" (click)="onClick(); appModal.open(data)"></fa-icon>
+          </td>
+          <td>
+            {{ data.name }}
+          </td>
+          <td>
+            {{ data.description }}
+          </td>
+          <td>
+            <fa-icon [icon]="icons.trash"></fa-icon>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<app-modal #appModal
+  [visible]="isModalOpen"
+  [displayData]="someData"
+  [modalType]="typeOfModal"
+  [modalTitle]="modalTitle"
+  (isModalOpen)="closeModal()"
+></app-modal>
 

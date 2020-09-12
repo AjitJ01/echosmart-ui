@@ -28,7 +28,8 @@ export class CategoryListComponent implements OnInit {
     trash: faTrashAlt
   };
   isModalOpen: boolean = false;
-  modalTitle = 'Hello';
+  modalTitle: string;
+  typeOfModal: string;
 
   modalVisisble: boolean = false;
 
@@ -53,8 +54,9 @@ export class CategoryListComponent implements OnInit {
       this.listData.paginator = this.paginator;
       //console.log(data); // this gives all list of data
       this.someData = data;
-      console.log(this.someData);
-    })
+      // console.log(this.someData);
+    });
+    console.log(this.someData)
   }
 
   onSearchClear(){
@@ -82,21 +84,11 @@ export class CategoryListComponent implements OnInit {
         this.listData = new MatTableDataSource(data);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-        console.log(data);
       })
     })
-    
   }
 
   onEdit(row){
-    // console.log(this.service.form)
-    // this.service.populateForm(row);
-    // console.log(this.service.form)
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.width = "60%";
-    // this.dialog.open(CategoryComponent,dialogConfig);
     console.log("on edit function from category-list component - before populate form",this.service.form.getRawValue())
     this.service.populateForm(row);
     const dialogConfig = new MatDialogConfig();
@@ -105,7 +97,7 @@ export class CategoryListComponent implements OnInit {
     dialogConfig.width = "60%";
     console.log("on edit function from category-list component - after populate form",this.service.form.getRawValue())
     
-    console.log(dialogConfig)
+    console.log(dialogConfig);
     // console.log(CategoryComponent.dialogRef)
     this.dialog.open(CategoryComponent,dialogConfig);
     console.log("on edit function from category-list component - after opening  form",this.service.form.getRawValue())
@@ -134,6 +126,17 @@ export class CategoryListComponent implements OnInit {
 
   onClick() {
     this.isModalOpen = true;
+    this.typeOfModal = "editModal"
+  }
+
+  onCreateNow() {
+    this.isModalOpen = true;
+    this.typeOfModal = "createModal";
+    this.modalTitle = "Create New Category"
+  }
+
+  closeModal() {
+    this.isModalOpen = false
   }
   
 

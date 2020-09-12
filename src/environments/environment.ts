@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apis: {
-    local: 'http://127.0.0.1:8000/api/category/'
+    local: 'http://127.0.0.1:8000/api/category'
   }
 };
 

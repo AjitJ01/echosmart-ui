@@ -10,7 +10,9 @@ import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { FormsModule } from '@angular/forms';
-import { ModalComponent } from './common/components/modal/modal.component'
+import { ModalComponent } from './common/components/modal/modal.component';
+import { NavbarComponent } from './common/components/navbar/navbar.component';
+import { ProductComponent } from './product/product.component'
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ModalComponent } from './common/components/modal/modal.component'
     AppComponent,
     CategoryComponent,
     CategoryListComponent,
-    ModalComponent
+    ModalComponent,
+    NavbarComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CategoryService {
-  private baseUrl = 'http://127.0.0.1:8000/api/category/';
+  private baseUrl = 'http://127.0.0.1:8000/api/category';
   constructor(private http: HttpClient , private _cookieService:CookieService) {}
   
 
@@ -53,8 +53,6 @@ export class CategoryService {
     // this.form.setValue({id: 1, name: "Accessories", details: "All accessories included."})
     // console.log(this.form.getRawValue)
     // this.form.controls.firstName.setValue('abc');
-  
-    
   }
 
 }

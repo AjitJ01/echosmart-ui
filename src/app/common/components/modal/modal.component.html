@@ -1,4 +1,40 @@
-<div class="container" *ngIf="visible">
+<div class="someClass" *ngIf="visible">
+  <div class="main-modal-content">
+    <div class="modal-header d-flex">
+      <h2>{{ modalTitle }}</h2>
+      <span (click)="closeModal()"> X </span>
+    </div>
+    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+      <form *ngIf="modalType == 'createModal'">
+        <div class="form-group m-2">
+          <label for="new-category">Enter category name: </label>
+          <input id="new-category" type="text" class="form-control p-2" placeholder="category name">
+        </div>
+        <div class="form-group m-2">
+          <label for="new-category-description">Enter category description: </label>
+          <input id="new-category-description" type="text" class="form-control p-2" placeholder="category description">
+        </div>
+        <button type="submit" class="btn btn-outline-success" (click)="onCreateNew()">create now</button>
+      </form>
+      <form *ngIf="modalType == 'editModal'">
+          <div class="form-group m-2">
+            <label for="category-name">Name: </label>
+            <input id="category-name" type="text" class="form-control p-2" value="{{selectedData.name}}" placeholder="start typing to edit name . . .">
+            <!-- <button class="btn btn-outline-secondary p-2">Submit</button> -->
+          </div> 
+          <div class="form-group m-2">
+            <label for="category-description">Description: </label>
+            <input id="category-description" type="text" class="form-control p-2" value="{{selectedData.description}}" placeholder="start typing to edit description . . .">
+            <!-- <button class="btn btn-outline-secondary p-2">Clear</button> -->
+          </div>
+          <small id="emailHelp" class="form-text text-muted m-2">Update above fields</small>
+          <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
+      </form>
+    </div>
+</div>
+
+</div>
+
   <!-- <h2>Modal Example</h2>
   
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
@@ -20,16 +56,6 @@
       
     </div>
   </div> -->
-  <div class="modal-header">
-    {{ modalTitle }}
-  </div>
-  <div class="modal-body">
-    Body
-  </div>
-  <div class="modal-footer">
-    footer
-  </div>
-</div>
 
 <!-- <div class="modal" *ngIf="visible" tabindex="-1">
   <div class="modal-overlay" (click)="closable && close()" tabindex="-1"></div>

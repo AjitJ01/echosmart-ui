@@ -13,3 +13,7 @@
   ul {
     list-style: none;
   }
+
+  fa-icon:hover {
+    cursor: pointer;
+  }
