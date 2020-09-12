@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,9 @@ import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { FormsModule } from '@angular/forms';
-import { ModalComponent } from './common/components/modal/modal.component'
+import { ModalComponent } from './common/components/modal/modal.component';
+import { NavbarComponent } from './common/components/navbar/navbar.component';
+import { ProductComponent } from './product/product.component'
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { ModalComponent } from './common/components/modal/modal.component'
     AppComponent,
     CategoryComponent,
     CategoryListComponent,
-    ModalComponent
+    ModalComponent,
+    NavbarComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +31,7 @@ import { ModalComponent } from './common/components/modal/modal.component'
     MaterialModule,
     HttpClientModule,
     FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

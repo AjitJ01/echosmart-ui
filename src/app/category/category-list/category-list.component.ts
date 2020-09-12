@@ -1,11 +1,17 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { CategoryService } from '../category.service';
 import { MatSort } from '@angular/material/sort'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 import { CategoryComponent } from '../category.component';
+import { faPlus, faSearch, faExternalLinkAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
+export interface listData {
+  id: number,
+  details: string,
+  name: string
+}
 
 @Component({
   selector: 'app-category-list',
@@ -13,11 +19,22 @@ import { CategoryComponent } from '../category.component';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
+  
+  someData: listData[];
+  icons = {
+    plus : faPlus,
+    search: faSearch,
+    externalLink: faExternalLinkAlt,
+    trash: faTrashAlt
+  };
+  isModalOpen: boolean = false;
+  modalTitle: string;
+  typeOfModal: string;
 
-  constructor(
-    private service : CategoryService,
-    private dialog: MatDialog,
-    ) { }
+  modalVisisble: boolean = false;
+
+  constructor(private service : CategoryService, private dialog: MatDialog) {
+  }
 
     
   
@@ -35,8 +52,11 @@ export class CategoryListComponent implements OnInit {
       this.listData = new MatTableDataSource(data);
       this.listData.sort = this.sort;
       this.listData.paginator = this.paginator;
-      console.log(data);
-    })
+      //console.log(data); // this gives all list of data
+      this.someData = data;
+      // console.log(this.someData);
+    });
+    console.log(this.someData)
   }
 
   onSearchClear(){
@@ -48,7 +68,12 @@ export class CategoryListComponent implements OnInit {
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }
   
+  onModalOpen() {
+    this.modalVisisble = true;
+  }
+  
   onCreate(){
+    console.log('clicked')
     this.service.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -59,21 +84,11 @@ export class CategoryListComponent implements OnInit {
         this.listData = new MatTableDataSource(data);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-        console.log(data);
       })
     })
-    
   }
 
   onEdit(row){
-    // console.log(this.service.form)
-    // this.service.populateForm(row);
-    // console.log(this.service.form)
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.width = "60%";
-    // this.dialog.open(CategoryComponent,dialogConfig);
     console.log("on edit function from category-list component - before populate form",this.service.form.getRawValue())
     this.service.populateForm(row);
     const dialogConfig = new MatDialogConfig();
@@ -82,7 +97,7 @@ export class CategoryListComponent implements OnInit {
     dialogConfig.width = "60%";
     console.log("on edit function from category-list component - after populate form",this.service.form.getRawValue())
     
-    console.log(dialogConfig)
+    console.log(dialogConfig);
     // console.log(CategoryComponent.dialogRef)
     this.dialog.open(CategoryComponent,dialogConfig);
     console.log("on edit function from category-list component - after opening  form",this.service.form.getRawValue())
@@ -108,6 +123,21 @@ export class CategoryListComponent implements OnInit {
   //   }
   // }
 }
+
+  onClick() {
+    this.isModalOpen = true;
+    this.typeOfModal = "editModal"
+  }
+
+  onCreateNow() {
+    this.isModalOpen = true;
+    this.typeOfModal = "createModal";
+    this.modalTitle = "Create New Category"
+  }
+
+  closeModal() {
+    this.isModalOpen = false
+  }
   
 
 

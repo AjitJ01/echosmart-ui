@@ -5,6 +5,10 @@
     --spacer: 1.25rem;
 }
 
+span {
+    margin: 5px;
+}
+
 div.container{
     margin: 0px 40px;
 }

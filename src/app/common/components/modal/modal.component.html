@@ -1,25 +1,80 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
+<div class="someClass" *ngIf="visible">
+  <div class="main-modal-content">
+    <div class="modal-header d-flex">
+      <h2>{{ modalTitle }}</h2>
+      <span (click)="closeModal()"> X </span>
+    </div>
+    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+      <form *ngIf="modalType == 'createModal'">
+        <div class="form-group m-2">
+          <label for="new-category">Enter category name: </label>
+          <input id="new-category" type="text" class="form-control p-2" placeholder="category name">
+        </div>
+        <div class="form-group m-2">
+          <label for="new-category-description">Enter category description: </label>
+          <input id="new-category-description" type="text" class="form-control p-2" placeholder="category description">
+        </div>
+        <button type="submit" class="btn btn-outline-success" (click)="onCreateNew()">create now</button>
+      </form>
+      <form *ngIf="modalType == 'editModal'">
+          <div class="form-group m-2">
+            <label for="category-name">Name: </label>
+            <input id="category-name" type="text" class="form-control p-2" value="{{selectedData.name}}" placeholder="start typing to edit name . . .">
+            <!-- <button class="btn btn-outline-secondary p-2">Submit</button> -->
+          </div> 
+          <div class="form-group m-2">
+            <label for="category-description">Description: </label>
+            <input id="category-description" type="text" class="form-control p-2" value="{{selectedData.description}}" placeholder="start typing to edit description . . .">
+            <!-- <button class="btn btn-outline-secondary p-2">Clear</button> -->
+          </div>
+          <small id="emailHelp" class="form-text text-muted m-2">Update above fields</small>
+          <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
+      </form>
+    </div>
+</div>
+
+</div>
+
+  <!-- <h2>Modal Example</h2>
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+  <!-- <div class="modal" id="myModal">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{ modalTitle }}</h4>
         </div>
         <div class="modal-body">
-          ...
+          <p>Some text in the modal.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
+      
     </div>
+  </div> -->
+
+<!-- <div class="modal" *ngIf="visible" tabindex="-1">
+  <div class="modal-overlay" (click)="closable && close()" tabindex="-1"></div>
+
+  <div class="modal-container text-left" tabindex="-1">
+      <h2 class="modal-header-title mb-3 pt-4 pl-4" *ngIf="modalTitle">{{ modalTitle }}</h2>
+
+      <header class="modal-header" *ngIf="modalTitle || closable" tabindex="-1">
+          <div
+              class="modal-header-close-btn tt_icon tt_icon-x pt-4 pr-2"
+              *ngIf="closable"
+              (click)="close()"
+              aria-label="Close"
+              tabindex="-1"
+          ></div>
+      </header>
+
+      <main class="modal-content px-4 pb-4">
+          <ng-content></ng-content>
+      </main>
   </div>
+</div> -->
