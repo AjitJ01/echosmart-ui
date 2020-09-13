@@ -30,8 +30,10 @@ export class CategoryListComponent implements OnInit {
   isModalOpen: boolean = false;
   modalTitle: string;
   typeOfModal: string;
-
   modalVisisble: boolean = false;
+
+  searchText: string = '';
+
 
   constructor(private service : CategoryService, private dialog: MatDialog) {
   }
