@@ -5,6 +5,24 @@
       <span (click)="closeModal()"> X </span>
     </div>
     <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+      <!-- login form -->
+      <form *ngIf="modalType == 'loginForm'">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="closeModal()" routerLink="/product">Submit</button>
+      </form>
+      <!-- form for creating new category -->
       <form *ngIf="modalType == 'createModal'">
         <div class="form-group m-2">
           <label for="new-category">Enter category name: </label>
@@ -16,6 +34,7 @@
         </div>
         <button type="submit" class="btn btn-outline-success" (click)="onCreateNew()">create now</button>
       </form>
+      <!-- form for updating category fields -->
       <form *ngIf="modalType == 'editModal'">
           <div class="form-group m-2">
             <label for="category-name">Name: </label>
@@ -28,7 +47,7 @@
             <!-- <button class="btn btn-outline-secondary p-2">Clear</button> -->
           </div>
           <small id="emailHelp" class="form-text text-muted m-2">Update above fields</small>
-          <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
+          <button type="submit" class="btn btn-outline-success my-2 my-sm-0" (click)="onSubmit()">Submit</button>
       </form>
     </div>
 </div>

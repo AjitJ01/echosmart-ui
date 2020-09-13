@@ -45,6 +45,28 @@ export class CategoryService {
     return this.http.post<Category>(this.baseUrl, JSON.stringify(category), httpOptions)
   }
 
+  deleteCategory(id: number): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+    httpOptions.headers.append('Content-Type','application/json');
+    httpOptions.headers.append('X-CSRFToken', this._cookieService.get('csrftoken'));
+    return this.http.delete(this.baseUrl + `/${id}`,httpOptions);
+  }
+
+  updateCategory(data) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+    httpOptions.headers.append('Content-Type','application/json');
+    httpOptions.headers.append('X-CSRFToken', this._cookieService.get('csrftoken'));
+    return this.http.put(this.baseUrl + `/${data.id}`,JSON.stringify(data) ,httpOptions);
+  }
+
   populateForm(data) {
     console.log('populateForm  - ',data)
     this.form.setValue(data);

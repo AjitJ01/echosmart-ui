@@ -12,7 +12,9 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from './common/components/modal/modal.component';
 import { NavbarComponent } from './common/components/navbar/navbar.component';
-import { ProductComponent } from './product/product.component'
+import { ProductComponent } from './product/product.component';
+import { LoginComponent } from './login/login.component';
+import { InventoryComponent } from './inventory/inventory.component'
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ProductComponent } from './product/product.component'
     CategoryListComponent,
     ModalComponent,
     NavbarComponent,
-    ProductComponent
+    ProductComponent,
+    LoginComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
