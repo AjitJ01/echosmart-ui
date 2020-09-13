@@ -7,11 +7,12 @@ import { Component,
   AfterViewInit
 } from '@angular/core';
 import { CategoryService } from '../../../category/category.service';
+import { stringify } from '@angular/compiler/src/util';
 
 export interface categoryData {
   id: number,
   description: string,
-  image: string,
+  image?: string,
   name: string
 }
 
@@ -64,10 +65,27 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit {
     this.serv.createCategory({name: name, description: description}).subscribe(
       x => console.log(x)
     );
+    this.visible = false;
+    this.isModalOpen.emit(false);
   }
 
 
   onClick(e) {}
-
+  onSubmit() {
+    const updateData: categoryData = {
+      id: 0, name:'', description: ''
+    };
+    updateData.id = this.selectedData.id;
+    updateData.name = (<HTMLInputElement>document.getElementById('category-name')).value;
+    updateData.description = (<HTMLInputElement>document.getElementById('category-description')).value;
+    console.log(this.selectedData);
+    
+    this.serv.updateCategory(updateData).subscribe(
+      data => {console.log(data)},
+      error => {console.log(error)}
+    );
+    this.visible = false;
+    this.isModalOpen.emit(false);
+  };
 
 }

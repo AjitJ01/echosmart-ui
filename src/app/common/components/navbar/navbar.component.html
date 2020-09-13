@@ -6,17 +6,23 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Category <span class="sr-only">(current)</span></a>
-        </li>
+        <!-- <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Category <span class="sr-only">(current)</span></a>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" routerLink="/product">Product</a>
+          <a class="nav-link" routerLink="/product">Home</a>
         </li>
 
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Profile</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onLogin()">{{logInStatus}}</button>
       </form>
     </div>
   </nav>
+  <app-modal #appModal
+  [visible]="isModalOpen"
+  [modalType]="typeOfModal"
+  [modalTitle]="modalTitle"
+></app-modal>
+  <router-outlet></router-outlet>

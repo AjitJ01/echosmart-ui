@@ -63,7 +63,6 @@
 </table>
 <mat-paginator [pageSizeOptions]="[10, 20, 40]" showFirstLastButtons></mat-paginator>
 </div> -->
-<app-navbar></app-navbar>
 <div style="position: relative; top: 80px;">
   <div class="card mx-auto mt-2 mb-2" style="width: 88rem;">
     <div class="d-flex flex-row justify-content-center">
@@ -107,7 +106,7 @@
             {{ data.description }}
           </td>
           <td>
-            <fa-icon [icon]="icons.trash"></fa-icon>
+            <fa-icon [icon]="icons.trash" (click)="onDelete(data)"></fa-icon>
           </td>
         </tr>
         <tr>

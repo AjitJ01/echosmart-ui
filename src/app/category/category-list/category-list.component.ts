@@ -126,6 +126,7 @@ export class CategoryListComponent implements OnInit {
 
   onClick() {
     this.isModalOpen = true;
+    this.modalTitle = 'Edit Category'
     this.typeOfModal = "editModal"
   }
 
@@ -134,6 +135,13 @@ export class CategoryListComponent implements OnInit {
     this.typeOfModal = "createModal";
     this.modalTitle = "Create New Category"
   }
+
+  onDelete(data){
+    console.log(data);
+    this.service.deleteCategory(data.id).subscribe(
+      x => console.log(`${x} deleted!`)
+    );
+  };
 
   closeModal() {
     this.isModalOpen = false
