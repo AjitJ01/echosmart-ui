@@ -70,11 +70,7 @@ export class CategoryService {
   populateForm(data) {
     console.log('populateForm  - ',data)
     this.form.setValue(data);
-    
     console.log("Printing values in get value:",this.form.getRawValue())
-    // this.form.setValue({id: 1, name: "Accessories", details: "All accessories included."})
-    // console.log(this.form.getRawValue)
-    // this.form.controls.firstName.setValue('abc');
   }
 
 }

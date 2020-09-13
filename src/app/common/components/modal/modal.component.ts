@@ -36,7 +36,6 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit {
   
 
   ngOnInit(): void {
-    console.log(this.modalType);
   }
 
   ngOnChanges(changes) {
@@ -49,7 +48,6 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit {
   open(data) {
     this.visible = false;
     this.selectedData = data;
-    console.log(this.selectedData);
   }
 
 
@@ -60,7 +58,6 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit {
 
   onCreateNew() {
     const name = (<HTMLInputElement>document.getElementById('new-category')).value;
-    console.log(`name: ${name}`)
     const description = (<HTMLInputElement>document.getElementById('new-category-description')).value;
     this.serv.createCategory({name: name, description: description}).subscribe(
       x => console.log(x)
@@ -78,7 +75,6 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit {
     updateData.id = this.selectedData.id;
     updateData.name = (<HTMLInputElement>document.getElementById('category-name')).value;
     updateData.description = (<HTMLInputElement>document.getElementById('category-description')).value;
-    console.log(this.selectedData);
     
     this.serv.updateCategory(updateData).subscribe(
       data => {console.log(data)},

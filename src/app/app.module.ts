@@ -5,7 +5,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CategoryComponent } from './category/category.component';
 import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryListComponent } from './category/category-list/category-list.component';
@@ -21,7 +20,6 @@ import { SignupComponent } from './signup/signup.component'
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
     CategoryListComponent,
     ModalComponent,
     NavbarComponent,
@@ -41,6 +39,6 @@ import { SignupComponent } from './signup/signup.component'
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CategoryComponent]
+  entryComponents: [AppComponent]
 })
 export class AppModule { }

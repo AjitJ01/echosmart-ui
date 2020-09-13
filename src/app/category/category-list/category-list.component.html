@@ -1,68 +1,3 @@
-<!-- <div class="search-div">
-  <button mat-raised-button (click)="onCreate()">
-    <mat-icon>add</mat-icon>Create
-  </button>
-  <mat-form-field class="search-form-field">
-    <input matInput [(ngModel)] = "searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
-    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf = "searchKey" (click)="onSearchClear()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-</div> -->
-
-<!-- new code below -->
-<!-- <div class="container text-center CtaActions d-md-flex justify-content-center">
-  <div class="CtaActionsButton p-2">
-    <button type="button" class="btn btn-primary" data-target="#myModal" (click)="onModalOpen()">
-      <span><fa-icon [icon]="icons.plus"></fa-icon></span><span>create</span>
-    </button>
-  </div>
-  <div class="CtaActionsInput p-2">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button"><fa-icon [icon]="icons.search"></fa-icon></button>
-      </div>
-    </div>
-  </div>
-</div>
-<app-modal [visible]="true"></app-modal> -->
-<!-- <div class="mat-elevation-z8">
-<table mat-table [dataSource]="listData" matSort>
-    
-    <ng-container matColumnDef='name'>
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category Name </th>
-        <td mat-cell *matCellDef="let category"> {{category.name}} </td>
-    </ng-container>
-    <ng-container matColumnDef='details'>
-        <th mat-header-cell *matHeaderCellDef> Category Details </th>
-        <td mat-cell *matCellDef="let category"> {{category.details}} </td>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
-          <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
-        </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="loading">
-        <mat-footer-cell *matFooterCellDef colspan="6">
-            Loading Data....
-        </mat-footer-cell>
-      </ng-container>
-      <ng-container matColumnDef="noData">
-        <mat-footer-cell *matFooterCellDef colspan="6">
-            No Data.
-        </mat-footer-cell>
-      </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
-    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
-    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
-</table>
-<mat-paginator [pageSizeOptions]="[10, 20, 40]" showFirstLastButtons></mat-paginator>
-</div> -->
 <div style="position: relative; top: 80px;">
   <div class="card mx-auto mt-2 mb-2" style="width: 88rem;">
     <div class="d-flex flex-row justify-content-center">
@@ -71,8 +6,7 @@
       </div>
       <div class="m-2" style="width: 60%;">
         <div class="input-group mb-3">
-          <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search . . .">
-          {{searchText}}
+          <input type="text" class="form-control" placeholder="Search . . .">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
           </div>
