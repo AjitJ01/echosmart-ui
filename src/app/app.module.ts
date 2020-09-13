@@ -14,7 +14,8 @@ import { ModalComponent } from './common/components/modal/modal.component';
 import { NavbarComponent } from './common/components/navbar/navbar.component';
 import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './login/login.component';
-import { InventoryComponent } from './inventory/inventory.component'
+import { InventoryComponent } from './inventory/inventory.component';
+import { SignupComponent } from './signup/signup.component'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { InventoryComponent } from './inventory/inventory.component'
     NavbarComponent,
     ProductComponent,
     LoginComponent,
-    InventoryComponent
+    InventoryComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

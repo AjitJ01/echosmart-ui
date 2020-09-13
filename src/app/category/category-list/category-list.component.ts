@@ -49,6 +49,7 @@ export class CategoryListComponent implements OnInit {
   
   ngOnInit(): void {
     this.service.getCategorysList().subscribe(data => {
+      console.log(data);
       this.listData = new MatTableDataSource(data);
       this.listData.sort = this.sort;
       this.listData.paginator = this.paginator;
@@ -65,7 +66,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   applyFilter(){
-    this.listData.filter = this.searchKey.trim().toLowerCase();
+    // this.listData.filter = this.searchKey.trim().toLowerCase();
   }
   
   onModalOpen() {
